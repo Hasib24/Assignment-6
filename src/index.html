@@ -14,6 +14,7 @@
     <main class="container  mx-auto mt-1">
       <!-- cards container  -->
       <section id="cards_container" class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        
         <!-- card 01 -->
         <div class="flex justify-center">
           <div class="block max-w-sm rounded-lg bg-white shadow-lg dark:bg-neutral-700">
@@ -38,11 +39,88 @@
               </ol>
               <hr>
               <div class="mt-2 grid grid-flow-col justify-between">
+                <!-- title and date -->
                 <div>
                   <h2 class="text-2xl">Title</h2>
                   <span>date: 11/02/2023</span>
                 </div>
-                <button id="btn_arrow"><img src="img/arrowBtn.png" alt=""></button>
+                <!-- button -->
+                <div id="btn_arrow">
+
+                  <div class="space-y-2">
+
+                    <button
+                      type="button"
+                      class="inline-block"
+                      data-te-toggle="modal"
+                      data-te-target="#exampleModalLg"
+                      data-te-ripple-init
+                      data-te-ripple-color="light">
+                      <img src="img/arrowBtn.png" alt="">
+                    </button>
+                    
+                  </div>
+                  <!-- after click on button  -->
+                  <div
+                    data-te-modal-init
+                    class="fixed top-1/4 left-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+                    id="exampleModalLg"
+                    tabindex="-1"
+                    aria-labelledby="exampleModalLgLabel"
+                    aria-modal="true"
+                    role="dialog">
+                    <div
+                      data-te-modal-dialog-ref
+                      class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:max-w-[500px] min-[992px]:max-w-[800px]">
+                      <div
+                        class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
+                        <div
+                          class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                          <h5
+                            class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200"
+                            id="exampleModalLgLabel">
+                            titile of modal
+                          </h5>
+                          <button
+                            type="button"
+                            class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                            data-te-modal-dismiss
+                            aria-label="Close">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke-width="1.5"
+                              stroke="currentColor"
+                              class="h-6 w-6">
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                          </button>
+                        </div>
+                        <!-- modal text content  -->
+                        <div class="relative p-4 grid sm:grid-cols-2">
+                          <!-- information of card  -->
+                          <div>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, corporis.
+                          </div>
+                          <!-- thamnail of card -->
+                          <div>
+                            <img
+                              class="rounded-t-lg"
+                              src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
+                              alt="" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
+
+                </div>
               </div>
             </div>
             
@@ -73,11 +151,78 @@
               </ol>
               <hr>
               <div class="mt-2 grid grid-flow-col justify-between">
+                <!-- title and date -->
                 <div>
                   <h2 class="text-2xl">Title</h2>
                   <span>date: 11/02/2023</span>
                 </div>
-                <button id="btn_arrow"><img src="img/arrowBtn.png" alt=""></button>
+                <!-- button -->
+                <div id="btn_arrow">
+
+                  <div class="space-y-2">
+
+                    <button
+                      type="button"
+                      class="inline-block"
+                      data-te-toggle="modal"
+                      data-te-target="#exampleModalLg"
+                      data-te-ripple-init
+                      data-te-ripple-color="light">
+                      <img src="img/arrowBtn.png" alt="">
+                    </button>
+                    
+                  </div>
+                  
+                  <div
+                    data-te-modal-init
+                    class="fixed top-0 left-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+                    id="exampleModalLg"
+                    tabindex="-1"
+                    aria-labelledby="exampleModalLgLabel"
+                    aria-modal="true"
+                    role="dialog">
+                    <div
+                      data-te-modal-dialog-ref
+                      class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:max-w-[500px] min-[992px]:max-w-[800px]">
+                      <div
+                        class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
+                        <div
+                          class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                          <h5
+                            class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200"
+                            id="exampleModalLgLabel">
+                            Large modal
+                          </h5>
+                          <button
+                            type="button"
+                            class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                            data-te-modal-dismiss
+                            aria-label="Close">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke-width="1.5"
+                              stroke="currentColor"
+                              class="h-6 w-6">
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                          </button>
+                        </div>
+                        <!-- modal text content  -->
+                        <div class="relative p-4">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam odit fugit repellendus qui temporibus numquam facilis adipisci quasi id sed.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
+
+                </div>
               </div>
             </div>
             
@@ -108,89 +253,87 @@
               </ol>
               <hr>
               <div class="mt-2 grid grid-flow-col justify-between">
+                <!-- title and date -->
                 <div>
                   <h2 class="text-2xl">Title</h2>
                   <span>date: 11/02/2023</span>
                 </div>
-                <button id="btn_arrow"><img src="img/arrowBtn.png" alt=""></button>
+                <!-- button -->
+                <div id="btn_arrow">
+
+                  <div class="space-y-2">
+
+                    <button
+                      type="button"
+                      class="inline-block"
+                      data-te-toggle="modal"
+                      data-te-target="#exampleModalLg"
+                      data-te-ripple-init
+                      data-te-ripple-color="light">
+                      <img src="img/arrowBtn.png" alt="">
+                    </button>
+                    
+                  </div>
+                  
+                  <div
+                    data-te-modal-init
+                    class="fixed top-0 left-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+                    id="exampleModalLg"
+                    tabindex="-1"
+                    aria-labelledby="exampleModalLgLabel"
+                    aria-modal="true"
+                    role="dialog">
+                    <div
+                      data-te-modal-dialog-ref
+                      class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:max-w-[500px] min-[992px]:max-w-[800px]">
+                      <div
+                        class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
+                        <div
+                          class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                          <h5
+                            class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200"
+                            id="exampleModalLgLabel">
+                            Large modal
+                          </h5>
+                          <button
+                            type="button"
+                            class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                            data-te-modal-dismiss
+                            aria-label="Close">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke-width="1.5"
+                              stroke="currentColor"
+                              class="h-6 w-6">
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                          </button>
+                        </div>
+                        <!-- modal text content  -->
+                        <div class="relative p-4">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam odit fugit repellendus qui temporibus numquam facilis adipisci quasi id sed.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
+
+                </div>
               </div>
             </div>
             
 
           </div>
         </div>
-
-        <!-- card 01 -->
-        <div class="flex justify-center">
-          <div class="block max-w-sm rounded-lg bg-white shadow-lg dark:bg-neutral-700">
-            <!-- card image -->
-            <a href="#!" data-te-ripple-init data-te-ripple-color="light">
-              <img
-                class="rounded-t-lg"
-                src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
-                alt="" />
-            </a>
-
-            <!-- card text -->
-            <div class="p-5">
-              <h5
-                class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-                Features
-              </h5>
-              <ol class="list-decimal text-white  px-6 mb-4">
-                <li>featuer 01</li>
-                <li>featuer 02</li>
-                <li>feature</li>
-              </ol>
-              <hr>
-              <div class="mt-2 grid grid-flow-col justify-between">
-                <div>
-                  <h2 class="text-2xl">Title</h2>
-                  <span>date: 11/02/2023</span>
-                </div>
-                <button id="btn_arrow"><img src="img/arrowBtn.png" alt=""></button>
-              </div>
-            </div>
-            
-
-          </div>
-        </div>
-        <!-- card 02 -->
-        <div class="flex justify-center">
-          <div class="block max-w-sm rounded-lg bg-white shadow-lg dark:bg-neutral-700">
-            <!-- card image -->
-            <a href="#!" data-te-ripple-init data-te-ripple-color="light">
-              <img
-                class="rounded-t-lg"
-                src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
-                alt="" />
-            </a>
-
-            <!-- card text -->
-            <div class="p-5">
-              <h5
-                class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-                Features
-              </h5>
-              <ol class="list-decimal text-white  px-6 mb-4">
-                <li>featuer 01</li>
-                <li>featuer 02</li>
-                <li>feature</li>
-              </ol>
-              <hr>
-              <div class="mt-2 grid grid-flow-col justify-between">
-                <div>
-                  <h2 class="text-2xl">Title</h2>
-                  <span>date: 11/02/2023</span>
-                </div>
-                <button id="btn_arrow"><img src="img/arrowBtn.png" alt=""></button>
-              </div>
-            </div>
-            
-
-          </div>
-        </div>
-        <!-- card 03 -->
+        
+        
+        <!-- first card-->
         <div class="flex justify-center">
           <div class="block max-w-sm rounded-lg bg-white shadow-lg dark:bg-neutral-700">
             <!-- card image -->
