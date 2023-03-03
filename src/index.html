@@ -74,8 +74,9 @@
                       class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:max-w-[500px] min-[992px]:max-w-[800px]">
                       <div
                         class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
+                        <!-- bg-white  -->
                         <div
-                          class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                          class="bg-white flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
                           <h5
                             class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200"
                             id="exampleModalLgLabel">
@@ -101,13 +102,47 @@
                           </button>
                         </div>
                         <!-- modal text content  -->
-                        <div class="relative p-4 grid sm:grid-cols-2">
+                        <div class="bg-white rounded-b-md relative p-4 grid md:grid-cols-2">
                           <!-- information of card  -->
-                          <div>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, corporis.
+                          <div class="m-2 border p-2">
+                            <!-- title info -->
+                            <div>ChatGPT is an AI-powered chatbot platform that uses OpenAI's GPT technology to simulate human conversation.</div>
+                            <!-- pricing -->
+                            <div class="grid grid-cols-3 justify-between">
+                              <!-- basic price : green-->
+                              <div>Free of Cost/Basic</div>
+                              <!-- pro price : orenge -->
+                              <div>Free Of Cost/Pro</div>
+                              <!-- enterprice price : red  -->
+                              <div>Free of Cost /Enterprise</div>
+                            </div>
+                            <!-- features & intrigation  -->
+                            <div class="grid grid-cols-2 justify-between">
+                              <!-- features  -->
+                              <div>
+                                <h2 class="font-semibold">Features</h2>
+                                <ul class="list-disc ml-4">
+                                  <li class="text-sm font-thin">sjkdfs</li>
+                                  <li class="text-sm font-thin">sjkdfs</li>
+                                  <li class="text-sm font-thin">sjkdfs</li>
+                                </ul>
+
+
+                              </div>
+                              <!-- intrigation  -->
+                              <div>
+                                <h2 class="font-semibold">Intrigations</h2>
+                                <ul class="list-disc ml-4">
+                                  <li class="text-sm font-thin">sjkdfs</li>
+                                  <li class="text-sm font-thin">sjkdfs</li>
+                                  <li class="text-sm font-thin">sjkdfs</li>
+                                </ul>
+
+                              </div>
+                            </div>
                           </div>
                           <!-- thamnail of card -->
-                          <div>
+                          <div class="m-2">
                             <img
                               class="rounded-t-lg"
                               src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
