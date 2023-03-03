@@ -120,21 +120,25 @@ const singleCardDataLoader = async (id) =>{
 
 const modalLouncher = (singleCardObj) =>{
     let {id, tool_name, description, website, logo, image_link, input_output_examples, features, integrations, use_cases} = singleCardObj;
+    let {input, output} = input_output_examples[0];
+    
+    // console.log(input_output_examples[0]);
     let exampleModalLgLabel = elById('exampleModalLgLabel').innerText = tool_name;
-    let modal_tahmnail = elById('modal_tahmnail').innerHTML = `<img
-                                                                    class="rounded-t-lg"
-                                                                    src=" ${image_link[0]} "
-                                                                    alt="" />`;
+    let modal_tahmnail = elById('modal_tahmnail').innerHTML = `
+    <img class="rounded-t-lg shadow-md rounded-b-md" src="${image_link[0]}" alt="" />
+    <div> 
+      <div class="font-bold text-xl text-slate-700 mt-2">${input} </div>
+      <div class="text-slate-600">${output}</div>
+    </div>
+                                                              
+    `;
     let card_description = elById('card_description').innerText = description;
 
   
     /**
      * few modal's features is not same as it's respective card 
      *  for instance for card id 1,3, 7 feature is not same on modal
-     * 
      * for card id 2, 16 feature is same on modal
-     * 
-     * 
      */
     let modal_feature_1 = elById('modal_feature_1').innerText = features[1].feature_name;
     let modal_feature_2 = elById('modal_feature_2').innerText = features[2].feature_name;
@@ -149,7 +153,7 @@ const modalLouncher = (singleCardObj) =>{
 
 
 const allCardDisplay = (dataArray) =>{
-  console.log(dataArray);
+  // console.log(dataArray);
 
   let seemoreBtn = document.querySelectorAll('#see_more_footer h1')[0];
   seemoreBtn.addEventListener('click', ()=>{

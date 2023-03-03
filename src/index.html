@@ -42,7 +42,7 @@
       
         <div
             data-te-modal-init
-            class="fixed top-1/4 left-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+            class="fixed top-1 md:top-1/4  left-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
             id="exampleModalLg"
             tabindex="-1"
             aria-labelledby="exampleModalLgLabel"
@@ -59,7 +59,7 @@
                   <h5
                     class="text-xl font-medium leading-normal text-neutral-800"
                     id="exampleModalLgLabel">
-                    titile of modal
+                    <!-- titile of modal -->
                   </h5>
                   <button
                     type="button"
@@ -81,19 +81,19 @@
                   </button>
                 </div>
                 <!-- modal text content  -->
-                <div class="bg-white rounded-b-md relative p-4 grid md:grid-cols-2">
+                <div class="bg-white rounded-b-md relative px-4 pb-4 grid md:grid-cols-2">
                   <!-- information of card  -->
-                  <div class="m-2 border p-2">
+                  <div class="m-2 border border-red-300 rounded-md bg-red-100 p-2">
                     <!-- title info -->
                     <div id="card_description">ChatGPT is an AI-powered chatbot platform that uses OpenAI's GPT technology to simulate human conversation.</div>
                     <!-- pricing -->
                     <div class="grid grid-cols-3 justify-between">
                       <!-- basic price : green-->
-                      <div>Free of Cost/Basic</div>
+                      <div class="bg-white mx-2 p-2 text-center rounded-md font-bold text-green-400">Free of Cost/Basic</div>
                       <!-- pro price : orenge -->
-                      <div>Free Of Cost/Pro</div>
+                      <div class="bg-white mx-2 p-2 text-center rounded-md font-bold text-yellow-400">Free Of Cost/Pro</div>
                       <!-- enterprice price : red  -->
-                      <div>Free of Cost /Enterprise</div>
+                      <div class="bg-white mx-2 p-2 text-center rounded-md font-bold text-red-400">Free of Cost /Enterprise</div>
                     </div>
                     <!-- features & intrigation  -->
                     <div class="grid grid-cols-2 justify-between">
@@ -121,7 +121,7 @@
                     </div>
                   </div>
                   <!-- thamnail of card -->
-                  <div class="m-2" id="modal_tahmnail">
+                  <div class="m-2 border border-slate-200 rounded-md  p-2" id="modal_tahmnail">
 
                     <!-- thamnail image  -->
                     
