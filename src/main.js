@@ -7,7 +7,9 @@ const dataLoader = async() => {
     const url = 'https://openapi.programming-hero.com/api/ai/tools'
     const res = await fetch('https://openapi.programming-hero.com/api/ai/tools');
     const loadedData = await res.json();
-    displayDataToCard(loadedData.data.tools)
+
+    displayDataToCard(loadedData.data.tools);
+    allCardDisplay(loadedData.data.tools)
 
     } catch (error) {
         console.log(error)
@@ -18,8 +20,19 @@ const dataLoader = async() => {
 // window.onload
 dataLoader()
 
+// function for re use
+const elById =(id) => document.getElementById(id);
+
+let cards_container = elById('cards_container');
+
+
+
 const displayDataToCard = (dataArray) => {
-    dataArray.map((singleData) => {
+
+    
+    let newArray = dataArray.slice(0,6)
+   
+    newArray.map((singleData) => {
         let {id, name, description, image, published_in, features, links} = singleData;
         const div = document.createElement('div')
         div.innerHTML = `<!-- card 01 -->
@@ -65,15 +78,25 @@ const displayDataToCard = (dataArray) => {
            </div>
          </div>
             </div>`
-      cards_container.appendChild(div)
+      cards_container.appendChild(div);
+      
+      // for spinner[ remove]
+      let spinner = elById('spinner');
+      if (cards_container.innerHTML.length > 0) {
+        spinner.classList.add('hidden')
+      };
+        
+
+
     })
 };
-
+  // data load for modal popup
 const singleCardDataLoader = async (id) =>{
     try {
-
+      id < 10 ? id = `0${id}`: id;
+      console.log(id);
         // fix the error of url 
-        const singleDataUrl = `https://openapi.programming-hero.com/api/ai/tool/0${id}`
+        const singleDataUrl = `https://openapi.programming-hero.com/api/ai/tool/${id}`
 
         const res = await fetch(singleDataUrl);
         const loadedDetails = await res.json();
@@ -94,3 +117,76 @@ const modalLouncher = (singleCardObj) =>{
                                                                     alt="" />`
     console.log(image_link[0]);
 }
+
+
+
+const allCardDisplay = (dataArray) =>{
+  console.log(dataArray);
+
+  let seemoreBtn = document.querySelectorAll('#see_more_footer h1')[0];
+  seemoreBtn.addEventListener('click', ()=>{
+    seemoreBtn.classList.remove('inline-block');
+    seemoreBtn.classList.add('hidden');
+    
+    cards_container.innerText = ''
+    console.log(dataArray);
+    dataArray.map((singleData) => {
+      let {id, name, description, image, published_in, features, links} = singleData;
+      const div = document.createElement('div')
+      div.innerHTML = `<!-- card 01 -->
+      <div class="flex justify-center">
+       <div class="block max-w-sm rounded-lg bg-white shadow-lg dark:bg-neutral-700">
+         <!-- card image -->
+         <a href="#!" data-te-ripple-init data-te-ripple-color="light">
+          <img class="rounded-t-lg" src="${image}" alt="" />
+         </a>
+         <!-- card text -->
+         <div class="p-5">
+          <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">Features</h5>
+          <ol class="list-decimal text-white  px-6 mb-4">
+            <li>featuer 01</li>
+            <li>featuer 02</li>
+            <li>feature</li>
+          </ol>
+          <hr>
+          <div class="mt-2 grid grid-flow-col justify-between">
+             <!-- title and date -->
+             <div>
+               <h2 class="text-2xl">Title</h2>
+               <span>date: 11/02/2023</span>
+             </div>
+             <!-- button -->
+             <div id="btn_arrow" onclick="singleCardDataLoader(${id})">
+               <div class="space-y-2">
+
+                  <button
+                  type="button"
+                  class="inline-block"
+                  data-te-toggle="modal"
+                  data-te-target="#exampleModalLg"
+                  data-te-ripple-init
+                  data-te-ripple-color="light">
+                  <img src="img/arrowBtn.png" alt="">
+                  </button>
+         
+               </div>
+              
+             </div>
+           </div>
+         </div>
+       </div>
+          </div>`
+    cards_container.appendChild(div)
+  })
+
+  })
+}
+
+
+
+// for spinner [ add ]
+let spinner = elById('spinner');
+if (cards_container.innerHTML.length === 0) {
+  spinner.classList.remove('hidden')
+};
+  
