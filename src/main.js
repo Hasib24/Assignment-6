@@ -74,12 +74,13 @@ const displayDataToCard = (dataArray) => {
       cards_container.appendChild(div)
     })
 };
-
+  // data load for modal popup
 const singleCardDataLoader = async (id) =>{
     try {
-
+      id < 10 ? id = `0${id}`: id;
+      console.log(id);
         // fix the error of url 
-        const singleDataUrl = `https://openapi.programming-hero.com/api/ai/tool/0${id}`
+        const singleDataUrl = `https://openapi.programming-hero.com/api/ai/tool/${id}`
 
         const res = await fetch(singleDataUrl);
         const loadedDetails = await res.json();
