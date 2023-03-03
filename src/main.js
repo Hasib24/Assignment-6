@@ -19,9 +19,16 @@ const dataLoader = async() => {
 
 // window.onload
 dataLoader()
-let cards_container = document.getElementById('cards_container');
+
+// function for re use
+const elById =(id) => document.getElementById(id);
+
+let cards_container = elById('cards_container');
+
+
 
 const displayDataToCard = (dataArray) => {
+
     
     let newArray = dataArray.slice(0,6)
    
@@ -71,7 +78,16 @@ const displayDataToCard = (dataArray) => {
            </div>
          </div>
             </div>`
-      cards_container.appendChild(div)
+      cards_container.appendChild(div);
+      
+      // for spinner[ remove]
+      let spinner = elById('spinner');
+      if (cards_container.innerHTML.length > 0) {
+        spinner.classList.add('hidden')
+      };
+        
+
+
     })
 };
   // data load for modal popup
@@ -106,10 +122,12 @@ const modalLouncher = (singleCardObj) =>{
 
 const allCardDisplay = (dataArray) =>{
   console.log(dataArray);
+
   let seemoreBtn = document.querySelectorAll('#see_more_footer h1')[0];
   seemoreBtn.addEventListener('click', ()=>{
     seemoreBtn.classList.remove('inline-block');
     seemoreBtn.classList.add('hidden');
+    
     cards_container.innerText = ''
     console.log(dataArray);
     dataArray.map((singleData) => {
@@ -165,4 +183,10 @@ const allCardDisplay = (dataArray) =>{
 }
 
 
+
+// for spinner [ add ]
+let spinner = elById('spinner');
+if (cards_container.innerHTML.length === 0) {
+  spinner.classList.remove('hidden')
+};
   
