@@ -35,50 +35,60 @@ const displayDataToCard = (dataArray) => {
     newArray.map((singleData) => {
         let {id, name, description, image, published_in, features, links} = singleData;
         const div = document.createElement('div')
-        div.innerHTML = `<!-- card 01 -->
-        <div class="flex justify-center">
-         <div class="block max-w-sm rounded-lg bg-white shadow-lg dark:bg-neutral-700">
-           <!-- card image -->
-           <a href="#!" data-te-ripple-init data-te-ripple-color="light">
-            <img class="rounded-t-lg" src="${image}" alt="" />
-           </a>
-           <!-- card text -->
-           <div class="p-5">
-            <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">Features</h5>
-            <ol class="list-decimal text-white  px-6 mb-4">
-              <li>featuer 01</li>
-              <li>featuer 02</li>
-              <li>feature</li>
-            </ol>
-            <hr>
-            <div class="mt-2 grid grid-flow-col justify-between">
-               <!-- title and date -->
-               <div>
-                 <h2 class="text-2xl">Title</h2>
-                 <span>date: 11/02/2023</span>
-               </div>
-               <!-- button -->
-               <div id="btn_arrow" onclick="singleCardDataLoader(${id})">
-                 <div class="space-y-2">
-
-                    <button
-                    type="button"
-                    class="inline-block"
-                    data-te-toggle="modal"
-                    data-te-target="#exampleModalLg"
-                    data-te-ripple-init
-                    data-te-ripple-color="light">
-                    <img src="img/arrowBtn.png" alt="">
-                    </button>
-           
-                 </div>
+        div.innerHTML = `<div class="flex justify-center">
+        <div class="block max-w-sm rounded-lg bg-white shadow-xl">
+          <!-- card image -->
+          <a href="#!" data-te-ripple-init data-te-ripple-color="light">
+           <img class="rounded-t-lg" src="${image}" alt="" />
+          </a>
+          <!-- card text -->
+          <div class="p-5 bg-white rounded-b-md">
+           <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 ">Features</h5>
+           <ol id="feature_list" class="list-decimal text-neutral-700  px-6 mb-4">
+             <li>${features[0]}</li>
+             <li>${features[1]}</li>
+             <li>${features[2]}</li>
+             
+           </ol>
+           <hr>
+           <div class="mt-2 grid grid-flow-col justify-between">
+              <!-- title and date -->
+              <div>
+                <h2 class="text-2xl text-slate-700">${name}</h2>
+                <span>${published_in}</span>
+              </div>
+              <!-- button -->
+              <div id="btn_arrow">
+              
+                <div class="space-y-2">
                 
-               </div>
-             </div>
-           </div>
-         </div>
-            </div>`
+              <button
+            onclick="singleCardDataLoader(${id})"
+            type="button"
+            class="inline-block"
+            data-te-toggle="modal"
+            data-te-target="#exampleModalLg"
+            data-te-ripple-init
+            data-te-ripple-color="light">
+            <img src="img/arrowBtn.png" alt="">
+              </button>
+            
+                </div>
+                <!-- after click on button  -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`
       cards_container.appendChild(div);
+
+      // let feature_list = elById('feature_list');
+      // for(let feature of features){
+      //   let li = document.createElement('le');
+      //   li.innerText = feature;
+      //   feature_list.appendChild(li)
+      // }
+
       
       // for spinner[ remove]
       let spinner = elById('spinner');
@@ -110,12 +120,30 @@ const singleCardDataLoader = async (id) =>{
 
 const modalLouncher = (singleCardObj) =>{
     let {id, tool_name, description, website, logo, image_link, input_output_examples, features, integrations, use_cases} = singleCardObj;
-    let exampleModalLgLabel = document.getElementById('exampleModalLgLabel').innerText = tool_name;
-    let modal_tahmnail = document.getElementById('modal_tahmnail').innerHTML = `<img
+    let exampleModalLgLabel = elById('exampleModalLgLabel').innerText = tool_name;
+    let modal_tahmnail = elById('modal_tahmnail').innerHTML = `<img
                                                                     class="rounded-t-lg"
                                                                     src=" ${image_link[0]} "
-                                                                    alt="" />`
-    console.log(image_link[0]);
+                                                                    alt="" />`;
+    let card_description = elById('card_description').innerText = description;
+
+  
+    /**
+     * few modal's features is not same as it's respective card 
+     *  for instance for card id 1,3, 7 feature is not same on modal
+     * 
+     * for card id 2, 16 feature is same on modal
+     * 
+     * 
+     */
+    let modal_feature_1 = elById('modal_feature_1').innerText = features[1].feature_name;
+    let modal_feature_2 = elById('modal_feature_2').innerText = features[2].feature_name;
+    let modal_feature_3 = elById('modal_feature_3').innerText = features[3].feature_name;
+
+
+
+
+  
 }
 
 
@@ -133,49 +161,51 @@ const allCardDisplay = (dataArray) =>{
     dataArray.map((singleData) => {
       let {id, name, description, image, published_in, features, links} = singleData;
       const div = document.createElement('div')
-      div.innerHTML = `<!-- card 01 -->
-      <div class="flex justify-center">
-       <div class="block max-w-sm rounded-lg bg-white shadow-lg dark:bg-neutral-700">
-         <!-- card image -->
-         <a href="#!" data-te-ripple-init data-te-ripple-color="light">
-          <img class="rounded-t-lg" src="${image}" alt="" />
-         </a>
-         <!-- card text -->
-         <div class="p-5">
-          <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">Features</h5>
-          <ol class="list-decimal text-white  px-6 mb-4">
-            <li>featuer 01</li>
-            <li>featuer 02</li>
-            <li>feature</li>
-          </ol>
-          <hr>
-          <div class="mt-2 grid grid-flow-col justify-between">
-             <!-- title and date -->
-             <div>
-               <h2 class="text-2xl">Title</h2>
-               <span>date: 11/02/2023</span>
-             </div>
-             <!-- button -->
-             <div id="btn_arrow" onclick="singleCardDataLoader(${id})">
-               <div class="space-y-2">
-
-                  <button
-                  type="button"
-                  class="inline-block"
-                  data-te-toggle="modal"
-                  data-te-target="#exampleModalLg"
-                  data-te-ripple-init
-                  data-te-ripple-color="light">
-                  <img src="img/arrowBtn.png" alt="">
-                  </button>
-         
-               </div>
+      div.innerHTML = `<div class="flex justify-center">
+        <div class="block max-w-sm rounded-lg bg-white shadow-xl">
+          <!-- card image -->
+          <a href="#!" data-te-ripple-init data-te-ripple-color="light">
+           <img class="rounded-t-lg" src="${image}" alt="" />
+          </a>
+          <!-- card text -->
+          <div class="p-5 bg-white rounded-b-md">
+           <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 ">Features</h5>
+           <ol id="feature_list" class="list-decimal text-neutral-700  px-6 mb-4">
+             <li>${features[0]}</li>
+             <li>${features[1]}</li>
+             <li>${features[2]}</li>
+             
+           </ol>
+           <hr>
+           <div class="mt-2 grid grid-flow-col justify-between">
+              <!-- title and date -->
+              <div>
+                <h2 class="text-2xl text-slate-700">${name}</h2>
+                <span>${published_in}</span>
+              </div>
+              <!-- button -->
+              <div id="btn_arrow">
               
-             </div>
-           </div>
-         </div>
-       </div>
-          </div>`
+                <div class="space-y-2">
+                
+              <button
+            onclick="singleCardDataLoader(${id})"
+            type="button"
+            class="inline-block"
+            data-te-toggle="modal"
+            data-te-target="#exampleModalLg"
+            data-te-ripple-init
+            data-te-ripple-color="light">
+            <img src="img/arrowBtn.png" alt="">
+              </button>
+            
+                </div>
+                <!-- after click on button  -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`
     cards_container.appendChild(div)
   })
 
