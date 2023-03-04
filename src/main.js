@@ -111,11 +111,15 @@ const singleCardDataLoader = async (id) => {
 
 const modalLouncher = (singleCardObj) => {
   let { id, tool_name, description, website, logo, image_link, input_output_examples, features, integrations, use_cases, pricing, accuracy } = singleCardObj;
-  let { input, output } = input_output_examples[0];
-
+  // let { input, output } = input_output_examples[0];
+  
+  // for handle input_output_examples Errors 
+  let input, output
+  input_output_examples === null ?  input = `Input not found` : { input, output } = input_output_examples[0];
+  input_output_examples === null ?  output = `Output not found` : { input, output } = input_output_examples[0];
+  
+  // for accuracy data and it's error 
   let accuracyPercentage = accuracy.score === null ? '' : `${accuracy.score*100}% Accuracy`
-
- 
 
   // console.log(input_output_examples[0]);
   let exampleModalLgLabel = (elById("exampleModalLgLabel").innerText =
@@ -135,7 +139,7 @@ const modalLouncher = (singleCardObj) => {
 
     // codition for handling accuracy data not found or null
     elById("accuracy_percent").innerText.length > 0 ? elById("accuracy_percent").classList.add('p-2'): elById("accuracy_percent").classList.remove('p-2');
-    
+
   let card_description = (elById("card_description").innerText = description);
 
   // for pricing of service 
@@ -156,9 +160,12 @@ const modalLouncher = (singleCardObj) => {
   elById("modal_feature_3").innerText = features[3].feature_name;
 
   // for intrigation
-  elById("modal_intrigation_1").innerText = integrations[0];
-  elById("modal_intrigation_2").innerText = integrations[1];
-  elById("modal_intrigation_3").innerText = integrations[2];
+  let modal_intrigation_1 =  elById("modal_intrigation_1");
+  let modal_intrigation_2 =  elById("modal_intrigation_2");
+  let modal_intrigation_3 =  elById("modal_intrigation_3");
+  integrations[0] === undefined ? modal_intrigation_1.innerText = `Not found` : modal_intrigation_1.innerText = integrations[0];
+  integrations[1] === undefined ? modal_intrigation_2.innerText = `Not found` : modal_intrigation_2.innerText = integrations[1];
+  integrations[2] === undefined ? modal_intrigation_3.innerText = `Not found` : modal_intrigation_3.innerText = integrations[2];
 };
 
 const allCardDisplay = (dataArray) => {
