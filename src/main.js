@@ -112,6 +112,8 @@ const singleCardDataLoader = async (id) => {
 const modalLouncher = (singleCardObj) => {
   let { id, tool_name, description, website, logo, image_link, input_output_examples, features, integrations, use_cases, pricing, accuracy } = singleCardObj;
   // let { input, output } = input_output_examples[0];
+
+  
   
   // for handle input_output_examples Errors 
   let input, output
@@ -163,6 +165,7 @@ const modalLouncher = (singleCardObj) => {
   elById("modal_feature_3").innerText = features[3].feature_name;
 
   // for intrigation
+  integrations===null ? integrations = [ "Not found", "Not found", "Not found" ] : integrations ;
   let modal_intrigation_1 =  elById("modal_intrigation_1");
   let modal_intrigation_2 =  elById("modal_intrigation_2");
   let modal_intrigation_3 =  elById("modal_intrigation_3");
