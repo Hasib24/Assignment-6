@@ -96,7 +96,7 @@ const displayDataToCard = (dataArray) => {
 const singleCardDataLoader = async (id) => {
   try {
     id < 10 ? (id = `0${id}`) : id;
-    console.log(id);
+    console.log(`Card no : ${id}`);
     // fix the error of url
     const singleDataUrl = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
 
@@ -112,14 +112,18 @@ const singleCardDataLoader = async (id) => {
 const modalLouncher = (singleCardObj) => {
   let { id, tool_name, description, website, logo, image_link, input_output_examples, features, integrations, use_cases, pricing, accuracy } = singleCardObj;
   let { input, output } = input_output_examples[0];
-  console.log(accuracy);
+
+  let accuracyPercentage = accuracy.score === null ? '' : `${accuracy.score*100}% Accuracy`
+
+ 
 
   // console.log(input_output_examples[0]);
   let exampleModalLgLabel = (elById("exampleModalLgLabel").innerText =
     tool_name);
   let modal_tahmnail = (elById("modal_tahmnail").innerHTML = `
-    <div>
-      <div>98% Accuracy</div>
+    <div class="relative">
+      <div class=" bg-red-600 text-slate-100 inline absolute right-1 top-1 rounded-md" id="accuracy_percent">${accuracyPercentage}</div>
+      
       <img class="rounded-t-lg shadow-md rounded-b-md" src="${image_link[0]}" alt="" />
     </div>
     <div> 
@@ -128,6 +132,10 @@ const modalLouncher = (singleCardObj) => {
     </div>
                                                               
     `);
+
+    // codition for handling accuracy data not found or null
+    elById("accuracy_percent").innerText.length > 0 ? elById("accuracy_percent").classList.add('p-2'): elById("accuracy_percent").classList.remove('p-2');
+    
   let card_description = (elById("card_description").innerText = description);
 
   // for pricing of service 
