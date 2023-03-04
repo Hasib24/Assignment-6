@@ -20,6 +20,7 @@ dataLoader();
 
 // function for re use
 const elById = (id) => document.getElementById(id);
+const elsByClass = (className) => document.getElementsByClassName(className);
 
 let cards_container = elById("cards_container");
 
@@ -95,7 +96,7 @@ const displayDataToCard = (dataArray) => {
 const singleCardDataLoader = async (id) => {
   try {
     id < 10 ? (id = `0${id}`) : id;
-    console.log(id);
+    console.log(`Card no : ${id}`);
     // fix the error of url
     const singleDataUrl = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
 
@@ -109,44 +110,68 @@ const singleCardDataLoader = async (id) => {
 };
 
 const modalLouncher = (singleCardObj) => {
-  let {
-    id,
-    tool_name,
-    description,
-    website,
-    logo,
-    image_link,
-    input_output_examples,
-    features,
-    integrations,
-    use_cases,
-  } = singleCardObj;
-  let { input, output } = input_output_examples[0];
+  let { id, tool_name, description, website, logo, image_link, input_output_examples, features, integrations, use_cases, pricing, accuracy } = singleCardObj;
+  // let { input, output } = input_output_examples[0];
+
+  
+  
+  // for handle input_output_examples Errors 
+  let input, output
+  input_output_examples === null ?  input = `Input not found` : { input, output } = input_output_examples[0];
+  input_output_examples === null ?  output = `Output not found` : { input, output } = input_output_examples[0];
+  
+  // for accuracy data and it's error 
+  let accuracyPercentage = accuracy.score === null ? '' : `${accuracy.score*100}% Accuracy`
 
   // console.log(input_output_examples[0]);
   let exampleModalLgLabel = (elById("exampleModalLgLabel").innerText =
     tool_name);
   let modal_tahmnail = (elById("modal_tahmnail").innerHTML = `
-    <img class="rounded-t-lg shadow-md rounded-b-md" src="${image_link[0]}" alt="" />
+    <div class="relative">
+      <div class=" bg-red-600 text-slate-100 inline absolute right-1 top-1 rounded-md" id="accuracy_percent">${accuracyPercentage}</div>
+      
+      <img class="rounded-t-lg shadow-md rounded-b-md" src="${image_link[0]}" alt="" />
+    </div>
     <div> 
       <div class="font-bold text-xl text-slate-700 mt-2">${input} </div>
       <div class="text-slate-600">${output}</div>
     </div>
                                                               
     `);
+
+    // codition for handling accuracy data not found or null
+    elById("accuracy_percent").innerText.length > 0 ? elById("accuracy_percent").classList.add('p-2'): elById("accuracy_percent").classList.remove('p-2');
+
   let card_description = (elById("card_description").innerText = description);
+
+  // for pricing of service 
+  let pricing_of_service = elsByClass('pricing_of_service')
+
+  // pricing_of_service[0].innerHTML = `<h1>${pricing[0].plan}</h1> <h1>${pricing[0].price}</h1>`;
+  // pricing_of_service[1].innerHTML = `<h1>${pricing[1].plan}</h1> <h1>${pricing[1].price}</h1>`;
+  // pricing_of_service[2].innerHTML = `<h1>${pricing[2].plan}</h1> <h1>${pricing[2].price}</h1>`;
+  pricing_of_service[0].innerHTML = `<h1>${ pricing===null? `No plan found`: pricing[0].plan}</h1> <h1>${pricing===null? `No price found`: pricing[0].price }</h1>`;
+  pricing_of_service[1].innerHTML = `<h1>${ pricing===null? `No plan found`: pricing[1].plan}</h1> <h1>${pricing===null? `No price found`: pricing[1].price }</h1>`;
+  pricing_of_service[2].innerHTML = `<h1>${ pricing===null? `No plan found`: pricing[2].plan}</h1> <h1>${pricing===null? `No price found`: pricing[2].price }</h1>`;
+  
 
   /**
    * few modal's features is not same as it's respective card
    *  for instance for card id 1,3, 7 feature is not same on modal
    * for card id 2, 16 feature is same on modal
    */
-  let modal_feature_1 = (elById("modal_feature_1").innerText =
-    features[1].feature_name);
-  let modal_feature_2 = (elById("modal_feature_2").innerText =
-    features[2].feature_name);
-  let modal_feature_3 = (elById("modal_feature_3").innerText =
-    features[3].feature_name);
+  elById("modal_feature_1").innerText = features[1].feature_name;
+  elById("modal_feature_2").innerText = features[2].feature_name;
+  elById("modal_feature_3").innerText = features[3].feature_name;
+
+  // for intrigation
+  integrations===null ? integrations = [ "Not found", "Not found", "Not found" ] : integrations ;
+  let modal_intrigation_1 =  elById("modal_intrigation_1");
+  let modal_intrigation_2 =  elById("modal_intrigation_2");
+  let modal_intrigation_3 =  elById("modal_intrigation_3");
+  integrations[0] === undefined ? modal_intrigation_1.innerText = `Not found` : modal_intrigation_1.innerText = integrations[0];
+  integrations[1] === undefined ? modal_intrigation_2.innerText = `Not found` : modal_intrigation_2.innerText = integrations[1];
+  integrations[2] === undefined ? modal_intrigation_3.innerText = `Not found` : modal_intrigation_3.innerText = integrations[2];
 };
 
 const allCardDisplay = (dataArray) => {
