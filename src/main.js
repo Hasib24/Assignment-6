@@ -1,4 +1,4 @@
-console.log(`js is connected`);
+console.log(`Welcome to console! JS is connected`);
 
 const dataLoader = async () => {
   try {
@@ -15,7 +15,7 @@ const dataLoader = async () => {
   }
 };
 
-// window.onload
+
 dataLoader();
 
 // function for re use
@@ -44,7 +44,6 @@ const displayDataToCard = (dataArray) => {
              <li>${features[0]}</li>
              <li>${features[1]}</li>
              <li>${features[2]}</li>
-             
            </ol>
            <hr>
            <div class="mt-2 grid grid-flow-col justify-between">
@@ -56,9 +55,7 @@ const displayDataToCard = (dataArray) => {
               </div>
               <!-- button -->
               <div id="btn_arrow">
-              
                 <div class="space-y-2">
-                
               <button
             onclick="singleCardDataLoader(${id})"
             type="button"
@@ -69,7 +66,6 @@ const displayDataToCard = (dataArray) => {
             data-te-ripple-color="light">
             <img src="img/arrowBtn.png" alt="">
               </button>
-            
                 </div>
                 <!-- after click on button  -->
               </div>
@@ -78,13 +74,6 @@ const displayDataToCard = (dataArray) => {
         </div>
       </div>`;
     cards_container.appendChild(div);
-
-    // let feature_list = elById('feature_list');
-    // for(let feature of features){
-    //   let li = document.createElement('le');
-    //   li.innerText = feature;
-    //   feature_list.appendChild(li)
-    // }
 
     // for spinner[ remove]
     let spinner = elById("spinner");
@@ -96,15 +85,13 @@ const displayDataToCard = (dataArray) => {
 // data load for modal popup
 const singleCardDataLoader = async (id) => {
   try {
+    // fixed the error of url
     id < 10 ? (id = `0${id}`) : id;
     console.log(`Card no : ${id}`);
-    // fix the error of url
     const singleDataUrl = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
-
     const res = await fetch(singleDataUrl);
     const loadedDetails = await res.json();
     modalLouncher(loadedDetails.data);
-    // displayDataToCard(loadedData.data.tools)
   } catch (error) {
     console.log(error);
   }
@@ -112,54 +99,43 @@ const singleCardDataLoader = async (id) => {
 
 const modalLouncher = (singleCardObj) => {
   let { id, tool_name, description, website, logo, image_link, input_output_examples, features, integrations, use_cases, pricing, accuracy } = singleCardObj;
-  // let { input, output } = input_output_examples[0];
 
-  
-  
   // for handle input_output_examples Errors 
   let input, output
   input_output_examples === null ?  input = `Input not found` : { input, output } = input_output_examples[0];
   input_output_examples === null ?  output = `Output not found` : { input, output } = input_output_examples[0];
   
-  // for accuracy data and it's error 
+  // for handle accuracy data and it's error 
   let accuracyPercentage = accuracy.score === null ? '' : `${accuracy.score*100}% Accuracy`
 
-  // console.log(input_output_examples[0]);
-  let exampleModalLgLabel = (elById("exampleModalLgLabel").innerText =
-    tool_name);
+  elById("exampleModalLgLabel").innerText = tool_name;
   let modal_tahmnail = (elById("modal_tahmnail").innerHTML = `
     <div class="relative">
       <div class=" bg-red-600 text-slate-100 inline absolute right-1 top-1 rounded-md" id="accuracy_percent">${accuracyPercentage}</div>
-      
       <img class="rounded-t-lg shadow-md rounded-b-md" src="${image_link[0]}" alt="" />
     </div>
     <div> 
       <div class="font-bold text-xl text-slate-700 mt-2">${input} </div>
       <div class="text-slate-600">${output}</div>
-    </div>
-                                                              
+    </div>                                                       
     `);
 
-    // codition for handling accuracy data not found or null
-    elById("accuracy_percent").innerText.length > 0 ? elById("accuracy_percent").classList.add('p-2'): elById("accuracy_percent").classList.remove('p-2');
+  // codition for handling accuracy data not found or null
+  elById("accuracy_percent").innerText.length > 0 ? elById("accuracy_percent").classList.add('p-2'): elById("accuracy_percent").classList.remove('p-2');
 
   let card_description = (elById("card_description").innerText = description);
 
   // for pricing of service 
   let pricing_of_service = elsByClass('pricing_of_service')
-
-  // pricing_of_service[0].innerHTML = `<h1>${pricing[0].plan}</h1> <h1>${pricing[0].price}</h1>`;
-  // pricing_of_service[1].innerHTML = `<h1>${pricing[1].plan}</h1> <h1>${pricing[1].price}</h1>`;
-  // pricing_of_service[2].innerHTML = `<h1>${pricing[2].plan}</h1> <h1>${pricing[2].price}</h1>`;
   pricing_of_service[0].innerHTML = `<h1>${ pricing===null? `No plan found`: pricing[0].plan}</h1> <h1>${pricing===null? `No price found`: pricing[0].price }</h1>`;
   pricing_of_service[1].innerHTML = `<h1>${ pricing===null? `No plan found`: pricing[1].plan}</h1> <h1>${pricing===null? `No price found`: pricing[1].price }</h1>`;
   pricing_of_service[2].innerHTML = `<h1>${ pricing===null? `No plan found`: pricing[2].plan}</h1> <h1>${pricing===null? `No price found`: pricing[2].price }</h1>`;
   
 
   /**
-   * few modal's features is not same as it's respective card
+   *  few modal's features is not same as it's respective card
    *  for instance for card id 1,3, 7 feature is not same on modal
-   * for card id 2, 16 feature is same on modal
+   *  for card id 2, 16 feature is same on modal
    */
   elById("modal_feature_1").innerText = features[1].feature_name;
   elById("modal_feature_2").innerText = features[2].feature_name;
@@ -176,15 +152,11 @@ const modalLouncher = (singleCardObj) => {
 };
 
 const allCardDisplay = (dataArray) => {
-  // console.log(dataArray);
-
   let seemoreBtn = document.querySelectorAll("#see_more_footer h1")[0];
   seemoreBtn.addEventListener("click", () => {
     seemoreBtn.classList.remove("inline-block");
     seemoreBtn.classList.add("hidden");
-
     cards_container.innerText = "";
-    // console.log(dataArray);
     dataArray.map((singleData) => {
       let { id, name, description, image, published_in, features, links } =
         singleData;
@@ -202,7 +174,6 @@ const allCardDisplay = (dataArray) => {
              <li>${features[0]}</li>
              <li>${features[1]}</li>
              <li>${features[2]}</li>
-             
            </ol>
            <hr>
            <div class="mt-2 grid grid-flow-col justify-between">
@@ -214,9 +185,7 @@ const allCardDisplay = (dataArray) => {
               </div>
               <!-- button -->
               <div id="btn_arrow">
-              
                 <div class="space-y-2">
-                
               <button
             onclick="singleCardDataLoader(${id})"
             type="button"
@@ -227,7 +196,6 @@ const allCardDisplay = (dataArray) => {
             data-te-ripple-color="light">
             <img src="img/arrowBtn.png" alt="">
               </button>
-            
                 </div>
                 <!-- after click on button  -->
               </div>
@@ -242,8 +210,7 @@ const allCardDisplay = (dataArray) => {
 
 const sortedAllCardDisplay = (dataArray) => {
   dataArray.map((singleData) => {
-    let { id, name, description, image, published_in, features, links } =
-      singleData;
+    let { id, name, description, image, published_in, features, links } = singleData;
     const div = document.createElement("div");
     div.innerHTML = `<div class="flex justify-center">
       <div class="block max-w-sm rounded-lg bg-white shadow-xl">
@@ -258,7 +225,6 @@ const sortedAllCardDisplay = (dataArray) => {
            <li>${features[0]}</li>
            <li>${features[1]}</li>
            <li>${features[2]}</li>
-           
          </ol>
          <hr>
          <div class="mt-2 grid grid-flow-col justify-between">
@@ -270,9 +236,7 @@ const sortedAllCardDisplay = (dataArray) => {
             </div>
             <!-- button -->
             <div id="btn_arrow">
-            
               <div class="space-y-2">
-              
             <button
           onclick="singleCardDataLoader(${id})"
           type="button"
@@ -283,7 +247,6 @@ const sortedAllCardDisplay = (dataArray) => {
           data-te-ripple-color="light">
           <img src="img/arrowBtn.png" alt="">
             </button>
-          
               </div>
               <!-- after click on button  -->
             </div>
@@ -295,7 +258,11 @@ const sortedAllCardDisplay = (dataArray) => {
   });
 };
 
-// for spinner [ add ]
+/**
+ * for spinner
+ * Spinner is added and it works well but you need slow internet to see it.
+ * I have chacked it by slowing internet from my router.
+ */
 let spinner = elById("spinner");
 if (cards_container.innerHTML.length === 0) {
   spinner.classList.remove("hidden");
@@ -303,7 +270,9 @@ if (cards_container.innerHTML.length === 0) {
 
 /**
  * For Sorting functionality
- *
+ * I works well. when only 6 card is visible it can sort over those card.
+ * Again when all card is visible it can also sort them date wise as old released AI is first.
+ * One more thing I loaded the data again for sort.
  */
 const loadAgainForSort = async () => {
   try {
@@ -320,7 +289,7 @@ const loadAgainForSort = async () => {
 
     const allDataArray = loadedData.data.tools;
     const smallArray = allDataArray.slice(0, 6);
-    // sorting function called
+    // sorting function is called
     const sortedArraySmall = smallArray.sort(sorter);
     const sortedArrayAll = allDataArray.sort(sorter);
 
