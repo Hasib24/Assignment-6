@@ -145,9 +145,12 @@ const modalLouncher = (singleCardObj) => {
   // for pricing of service 
   let pricing_of_service = elsByClass('pricing_of_service')
 
-  pricing_of_service[0].innerHTML = `<h1>${pricing[0].plan}</h1> <h1>${pricing[0].price}</h1>`;
-  pricing_of_service[1].innerHTML = `<h1>${pricing[1].plan}</h1> <h1>${pricing[1].price}</h1>`;
-  pricing_of_service[2].innerHTML = `<h1>${pricing[2].plan}</h1> <h1>${pricing[2].price}</h1>`;
+  // pricing_of_service[0].innerHTML = `<h1>${pricing[0].plan}</h1> <h1>${pricing[0].price}</h1>`;
+  // pricing_of_service[1].innerHTML = `<h1>${pricing[1].plan}</h1> <h1>${pricing[1].price}</h1>`;
+  // pricing_of_service[2].innerHTML = `<h1>${pricing[2].plan}</h1> <h1>${pricing[2].price}</h1>`;
+  pricing_of_service[0].innerHTML = `<h1>${ pricing===null? `No plan found`: pricing[0].plan}</h1> <h1>${pricing===null? `No price found`: pricing[0].price }</h1>`;
+  pricing_of_service[1].innerHTML = `<h1>${ pricing===null? `No plan found`: pricing[1].plan}</h1> <h1>${pricing===null? `No price found`: pricing[1].price }</h1>`;
+  pricing_of_service[2].innerHTML = `<h1>${ pricing===null? `No plan found`: pricing[2].plan}</h1> <h1>${pricing===null? `No price found`: pricing[2].price }</h1>`;
   
 
   /**
