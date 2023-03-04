@@ -51,7 +51,8 @@ const displayDataToCard = (dataArray) => {
               <!-- title and date -->
               <div>
                 <h2 class="text-2xl text-slate-700">${name}</h2>
-                <span>${published_in}</span>
+                <img class="inline" src="img/calander_icon.png" alt="">
+                <span class="text-slate-600" >${published_in}</span>
               </div>
               <!-- button -->
               <div id="btn_arrow">
@@ -208,7 +209,8 @@ const allCardDisplay = (dataArray) => {
               <!-- title and date -->
               <div>
                 <h2 class="text-2xl text-slate-700">${name}</h2>
-                <span>${published_in}</span>
+                <img class="inline" src="img/calander_icon.png" alt="">
+                <span class="text-slate-600" >${published_in}</span>
               </div>
               <!-- button -->
               <div id="btn_arrow">
@@ -263,7 +265,8 @@ const sortedAllCardDisplay = (dataArray) => {
             <!-- title and date -->
             <div>
               <h2 class="text-2xl text-slate-700">${name}</h2>
-              <span>${published_in}</span>
+              <img class="inline" src="img/calander_icon.png" alt="">
+                <span class="text-slate-600" >${published_in}</span>
             </div>
             <!-- button -->
             <div id="btn_arrow">
